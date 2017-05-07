@@ -17,10 +17,8 @@ extern void setservers();
 String version = "1.0 z dnia 07-05-2017";
 
 //SSID i pass do WiFi
-//const char* ssid = "SSID";   // SSID sieci WiFi
-//const char* password = "pass";  // password do WiFi
-const char* ssid = "POLJANT_WLAN";   // SSID sieci LAN/WLAN
-const char* password = "Marcjzt29newpass";  // password
+const char* ssid = "SSID";   // SSID sieci WiFi
+const char* password = "pass";  // password do WiFi
 
 //const int port = 80;                 // port serwera www
 extern ESP8266WebServer server; //(port);
