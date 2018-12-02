@@ -18,8 +18,8 @@ extern void setservers();
 String version = "1.02 z dnia "DATA_COMPIL;
 
 //SSID i pass do WiFi
-//const char* ssid = "SSID";   // SSID sieci WiFi
-//const char* password = "pass";  // password do WiFi
+const char* ssid = "SSID";   // SSID sieci WiFi
+const char* password = "pass";  // password do WiFi
 
 //const int port = 80;                 // port serwera www
 extern ESP8266WebServer server; //(port);
