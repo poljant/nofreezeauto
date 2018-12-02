@@ -117,7 +117,7 @@ String HTMLPage1() {      // pierwsza część strony www
 String HTMLPage2() {            // główna strona www
  String p = "";
   if (!nf.bmode) { //gdy ustawiony tryb reczny
-   p += ( (nf.relay1.read()) ? "<p><a href = \"/relay1/0\"><button class=\"btn btn-danger\">Przekaźnik 1 ON</button></a></p>\n" : "<p><a href = \"/relay1/1\"><button class=\"btn btn-success\">Przekaźnik 1 OFF</button></a></p>\n");
+   p += ( (nf.relay1.read()) ? "<p><a href = \"/relay1/0\"><button class=\"btn btn-danger\">Przekaźnik ON</button></a></p>\n" : "<p><a href = \"/relay1/1\"><button class=\"btn btn-success\">Przekaźnik OFF</button></a></p>\n");
   // na jakie piny co podłaczono
   // stopka strony
 // p += ( "<p> 1-Wire connected to D2</p>\n");
@@ -145,11 +145,11 @@ String HTMLPage2() {            // główna strona www
    p += ( "</p>\n");
   }
   else { // gdy tryb AUTO
-   p += ( (nf.relay1.read()) ? "<p><button class=\"btn btn-danger\">Przekaźnik 1 ON</button></p>\n" : "<p><button class=\"btn btn-success\">Przekaźnik 1 OFF</button></p>\n");
+   p += ( (nf.relay1.read()) ? "<p><button class=\"btn btn-danger\">Przekaźnik ON</button></p>\n" : "<p><button class=\"btn btn-success\">Przekaźnik OFF</button></p>\n");
    }
   // wyświetl jaki tryb wybrany
-  p += ( (nf.bmode) ? "<p><a href = \"/login\"><button class=\"btn btn-success\">tryb AUTO</button></a></p>\n" \
-  : "<p><a href = \"/auto\"> <button class=\"btn btn-danger\"> tryb MANUAL</button></a></p>\n");
+  p += ( (nf.bmode) ? "<p><a href = \"/login\"><button class=\"btn btn-success\">AUTO On</button></a></p>\n" \
+  : "<p><a href = \"/auto\"> <button class=\"btn btn-danger\"> MANUAL On</button></a></p>\n");
   return p;
 }
 

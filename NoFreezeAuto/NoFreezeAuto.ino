@@ -13,23 +13,24 @@ NoFreeze nf;
 extern void setservers();
 #define led D4  // sygnalizacja diody led wbudowanej
 #define relay D1  // do tego pinu jest podłączony przekaźnik
-
-String version = "1.0 z dnia 07-05-2017";
+#define DATA_COMPIL __TIMESTAMP__	//czas kompilacji
+//String version = "1.02 Compiled: "+__DATE__+" "+__TIME__;
+String version = "1.02 z dnia "DATA_COMPIL;
 
 //SSID i pass do WiFi
-const char* ssid = "SSID";   // SSID sieci WiFi
-const char* password = "pass";  // password do WiFi
+//const char* ssid = "SSID";   // SSID sieci WiFi
+//const char* password = "pass";  // password do WiFi
 
 //const int port = 80;                 // port serwera www
 extern ESP8266WebServer server; //(port);
 
-#define DEBUG
-//String slocation="Strych - łazienka";
-String slocation="Hydrofornia";
-//#define IP_STATIC
+//#define DEBUG
+String slocation="Strych - łazienka";
+//String slocation="Hydrofornia";
+#define IP_STATIC
 #ifdef IP_STATIC
-//IPAddress IPadr(10,110,0,112); //stały IP łazienki na strychu
-IPAddress IPadr(10,110,0,114); //stały IP hydroforni
+IPAddress IPadr(10,110,0,112); //stały IP łazienki na strychu
+//IPAddress IPadr(10,110,0,114); //stały IP hydroforni
 IPAddress netmask(255,255,0,0);
 IPAddress gateway(10,110,0,1);
 #endif
@@ -38,6 +39,13 @@ void setup()
 #ifdef DEBUG
  Serial.begin(115200);
 #endif
+//EEPROM.begin(512);
+ // wyzeruj chwilowo te wartości
+// timeOn = 0; // czas załączenia
+// timeOff = 0; // czas wyłaczenia
+ //konfiguracja pinów leda i przekaźnika
+// pinMode(led0, OUTPUT);
+ //pinMode(relay1, OUTPUT);
 
 #ifdef IP_STATIC
  WiFi.config(IPadr,gateway,netmask);
@@ -63,6 +71,7 @@ void setup()
  Serial.println("WiFi connected");
  Serial.println(WiFi.localIP());          // Wypisz IP serwera
  Serial.println(WiFi.macAddress());      // wypisz MAC adres
+// Serial.println(IPtoStr(IPadr));
 #endif
  nf.led0.setPin(led);
  nf.relay1.setPin(relay);
@@ -72,11 +81,21 @@ setservers();
 
 }
 
+// The loop function is called in an endless loop
 void loop()
 {
 #ifdef DEBUG
- Serial.println(nf.tempout);  // wypisz temperaturę zewnętrzną
- Serial.println(nf.tempinput);  // wypisz temperaturę wewnętrzną
+//extern sensors;
+ //sensors.requestTemperatures();  // uruchom odczyt czujników temperatury
+ //delay(1000);
+ //temp = sensors.getTempCByIndex(0); //czytaj temperaturę w ºC
+ // gdy brak czujnika ustaw temperaturę dodatnią
+// tempout =  (temp==-127) ? 20 : temp;
+ Serial.println(nf.tempout);  // wypisz temperaturę
+ //temp = sensors.getTempCByIndex(1);  //czytaj temperaturę w ºC
+ // gdy brak czujnika ustaw temperaturę dodatnią
+ //tempinput =  (temp==-127) ? 21 : temp;
+ Serial.println(nf.tempinput);  // wypisz temperaturę
 #endif
 
  nf.working();
