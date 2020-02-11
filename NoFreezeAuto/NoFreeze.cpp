@@ -13,7 +13,7 @@
 #include <EEPROM.h>
 
 #define pin_relay1 D1  // pin z przekaźnikiem
-#define pin_LED BUILTIN_LED // pin z wbudowanym LED
+#define pin_LED LED_BUILTIN // pin z wbudowanym LED
 #define pinOW D2	// pin z szyną 1-Wire
 
 OneWire oneWire(pinOW);

@@ -7,19 +7,21 @@
 #include "Relay.h"
 #include <OneWire.h>
 #include <DallasTemperature.h>
+#include "secrets.h"
 
 NoFreeze nf;
 
 extern void setservers();
 #define led D4  // sygnalizacja diody led wbudowanej
 #define relay D1  // do tego pinu jest podłączony przekaźnik
-#define DATA_COMPIL __TIMESTAMP__	//czas kompilacji
+//#define DATE_COMPIL __TIMESTAMP__	//czas kompilacji
 //String version = "1.02 Compiled: "+__DATE__+" "+__TIME__;
-String version = "1.02 z dnia "DATA_COMPIL;
+//String compiledate = DATE_COMPIL;
+String version = ("1.2.1 z dnia " __TIMESTAMP__);
 
 //SSID i pass do WiFi
-const char* ssid = "SSID";   // SSID sieci WiFi
-const char* password = "pass";  // password do WiFi
+//const char* ssid = "SSID";   // SSID sieci WiFi
+//const char* password = "pass";  // password do WiFi
 
 //const int port = 80;                 // port serwera www
 extern ESP8266WebServer server; //(port);
